@@ -27,7 +27,7 @@ RUN wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/
 
 RUN export CHROME_PATH=/usr/lib/chromium/
 
-RUN yarn global add lighthouse
+RUN yarn global add lighthouse@6.4.1
 
 COPY audit.sh /usr/local/bin/audit
 RUN chmod +x /usr/local/bin/audit
