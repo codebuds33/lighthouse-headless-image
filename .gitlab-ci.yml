@@ -7,14 +7,12 @@ build_latest:
   stage: build
   services:
     - docker:dind
-  variables:
-    IMAGE_TAG: codebuds/lighthouse
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker build -t $IMAGE_TAG .
-    - docker tag $IMAGE_TAG:latest
-    - docker tag $IMAGE_TAG:$CI_COMMIT_REF_SLUG
-    - docker push $IMAGE_TAG
+    - docker tag IMAGE_NAME IMAGE_NAME:latest
+    - docker tag IMAGE_NAME IMAGE_NAME:$CI_COMMIT_REF_SLUG
+    - docker push IMAGE_NAME
   only:
     refs:
       -  /^[0-9]*\.[0-9]*\.[0-9]*$/
