@@ -23,7 +23,7 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-RUN wget https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json -P /usr/src
+#https://raw.githubusercontent.com/jfrazelle/dotfiles/master/etc/docker/seccomp/chrome.json
 COPY chrome.json /usr/src/chrome.json
 
 RUN export CHROME_PATH=/usr/lib/chromium/
