@@ -8,6 +8,7 @@ build_latest:
   services:
     - docker:dind
   variables:
+    IMAGE_NAME: codebuds/lighthouse
     IMAGE: $CI_REGISTRY/$IMAGE_NAME
   script:
     - echo $CI_REGISTRY
