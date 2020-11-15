@@ -1,8 +1,5 @@
 stages:
   - build
-  - fixture
-  - test
-  - deploy
 
 build_latest:
   tags:
@@ -11,27 +8,13 @@ build_latest:
   services:
     - docker:dind
   variables:
-    IMAGE_TAG: codebuds/lighthouse:latest
+    IMAGE_TAG: codebuds/lighthouse
   script:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $IMAGE_TAG ./docker/php/ --target=php_base
+    - docker build -t $IMAGE_TAG .
+    - docker tag $IMAGE_TAG:latest
+    - docker tag $IMAGE_TAG:$CI_COMMIT_REF_SLUG
     - docker push $IMAGE_TAG
   only:
     refs:
-      - develop
-
-build_version:
-  tags:
-    - dind
-  stage: build
-  services:
-    - docker:dind
-  variables:
-    IMAGE_TAG: codebuds/lighthouse:$CI_COMMIT_REF_SLUG
-  script:
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker build -t $IMAGE_TAG ./docker/php/ --target=php_base
-    - docker push $IMAGE_TAG
-  only:
-    refs:
-      - /^[0-9]*\.[0-9]*\.[0-9]*$/
+      -  /^[0-9]*\.[0-9]*\.[0-9]*$/
