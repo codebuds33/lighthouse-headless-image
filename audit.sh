@@ -1,9 +1,9 @@
 #!/bin/bash
 
-usage() { echo "Usage: $0 [-u <string>] [-p <string>] [-o <string>] [-n <string>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-u <string>] [-p <string>] [-o <string>] [-n <string>] [-f <string>]" 1>&2; exit 1; }
 defaultOptions='--chrome-flags="--headless --no-sandbox" --no-enable-error-reporting'
 
-while getopts ":u:p:o:n:" o; do
+while getopts ":u:p:o:n:f:" o; do
 case "${o}" in
   u)
     url=${OPTARG}
@@ -16,6 +16,9 @@ case "${o}" in
     ;;
   n)
     name=${OPTARG}
+    ;;
+  f)
+    defaultOptions="${defaultOptions} --emulated-form-factor=${OPTARG}"
     ;;
   *)
     usage
@@ -30,6 +33,7 @@ if [ -n "$url" ]; then
   if [ -n "$name" ];then
     outputPath=" --output-path ./${name}.report.html"
   fi
+  echo "$defaultOptions"
   eval lighthouse "$url" "$defaultOptions" "$outputPath"
   if [ -n "$url" ]; then
     for path in "${paths[@]}"; do
