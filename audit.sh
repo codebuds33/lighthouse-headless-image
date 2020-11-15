@@ -1,9 +1,9 @@
 #!/bin/bash
 
-usage() { echo "Usage: $0 [-u <string>] [-p <string>] [-o <string>] [-n <string>] [-f <string>]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-u <string>] [-p <string>] [-o <string>] [-n <string>] [-f <string>] [-t <string>]" 1>&2; exit 1; }
 defaultOptions='--chrome-flags="--headless --no-sandbox" --no-enable-error-reporting'
 
-while getopts ":u:p:o:n:f:" o; do
+while getopts ":u:p:o:n:f:t:" o; do
 case "${o}" in
   u)
     url=${OPTARG}
@@ -19,6 +19,9 @@ case "${o}" in
     ;;
   f)
     defaultOptions="${defaultOptions} --emulated-form-factor=${OPTARG}"
+    ;;
+  t)
+    defaultOptions="${defaultOptions} --output=${OPTARG}"
     ;;
   *)
     usage

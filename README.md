@@ -9,7 +9,7 @@ In order to get this done the image has chromium installed and will run in the h
 If you want to audit an url you can run the following code:
 
 ```shell script
-docker run --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine
+docker run --rm -v ~/reports:/usr/src/app registry.codebuds.com/docker/lighthouse:latest -u https://site.mine
 ```
 
 This will run the lighthouse audit for the given URL with and save the HTML file of the report in ~/reports.
@@ -21,6 +21,8 @@ There are certain more options that can be used :
 - `-p`: This will help add more paths from the url to make it easy to audit multiple pages.
 - `-n`: This allows you to set a name for the report instead of using the default one.
 - `-o`: This allows to override the options that are used by default for the lighthouse audit. Because this is being run inside a docker container the default options are the following `--chrome-flags="--headless --no-sandbox" --no-enable-error-reporting`
+- `-f`: This allows to change the emulated form factor, either 'mobile', 'desktop' or 'none'. Default: 'mobile'`
+- `-t`: This allows to change the output either 'html', 'csv' or 'json'. Default: 'html'`
 
 ## Examples
 
@@ -52,7 +54,7 @@ services:
       - ./reports:/usr/src/app
 ```
 
-and run the commands as follows :
+And run the commands as follows :
 
 ```shell script
 docker-compose run --rm lighthouse audit -u https://site.mine
