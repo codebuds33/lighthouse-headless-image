@@ -1,5 +1,7 @@
 FROM node:15-alpine
 
+ARG LIGHTHOUSE_VERSION=6.5.0
+
 # Installs latest Chromium package.
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories \
     && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
@@ -28,7 +30,7 @@ COPY chrome.json /usr/src/chrome.json
 
 RUN export CHROME_PATH=/usr/lib/chromium/
 
-RUN yarn global add lighthouse@6.4.1
+RUN yarn global add lighthouse@$LIGHTHOUSE_VERSION
 
 COPY audit.sh /usr/local/bin/audit
 RUN chmod +x /usr/local/bin/audit

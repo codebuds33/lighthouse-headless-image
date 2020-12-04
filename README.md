@@ -20,7 +20,9 @@ There are certain more options that can be used :
 
 - `-p`: This will help add more paths from the url to make it easy to audit multiple pages.
 - `-n`: This allows you to set a name for the report instead of using the default one.
-- `-o`: This allows to override the options that are used by default for the lighthouse audit. Because this is being run inside a docker container the default options are the following `--chrome-flags="--headless --no-sandbox" --no-enable-error-reporting`
+- `-o`: This allows to override the options that are used by default for the lighthouse audit.
+  Because this is being run inside a docker container the default options are the
+  following `--chrome-flags="--headless --no-sandbox" --no-enable-error-reporting`
 - `-f`: This allows to change the emulated form factor, either 'mobile', 'desktop' or 'none'. Default: 'mobile'`
 - `-t`: This allows to change the output either 'html', 'csv' or 'json'. Default: 'html'`
 
@@ -39,7 +41,8 @@ docker run --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://s
 # ~/reports/my-project_page3.report.html
 ```
 
-This is just a starting point we will add easier ways to trigger the JSON outputs and modify more options without having to change the whole `-o` option.
+This is just a starting point we will add easier ways to trigger the JSON outputs and modify more options without having
+to change the whole `-o` option.
 
 ## Docker-compose
 
@@ -54,7 +57,7 @@ services:
       - ./reports:/usr/src/app
 ```
 
-And run the commands as follows :
+And run the following command :
 
 ```shell script
 docker-compose run --rm lighthouse audit -u https://site.mine
