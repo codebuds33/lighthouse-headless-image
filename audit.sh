@@ -18,7 +18,7 @@ case "${o}" in
     name=${OPTARG}
     ;;
   f)
-    defaultOptions="${defaultOptions} --emulated-form-factor=${OPTARG}"
+    defaultOptions="${defaultOptions} --preset=${OPTARG}"
     ;;
   t)
     defaultOptions="${defaultOptions} --output=${OPTARG}"
