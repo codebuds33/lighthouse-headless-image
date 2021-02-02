@@ -1,12 +1,9 @@
 FROM node:15-alpine
 
-ARG LIGHTHOUSE_VERSION=6.5.0
+ARG LIGHTHOUSE_VERSION=7.0.1
 
 # Installs latest Chromium package.
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
-    && echo "http://dl-cdn.alpinelinux.org/alpine/v3.12/main" >> /etc/apk/repositories \
+RUN  echo "http://dl-cdn.alpinelinux.org/alpine/v3.13/main" >> /etc/apk/repositories \
     && apk upgrade -U -a \
     && apk add --no-cache \
     libstdc++ \
@@ -15,7 +12,6 @@ RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositorie
     nss \
     freetype \
     ttf-freefont \
-    wqy-zenhei \
     bash \
     && rm -rf /var/cache/* \
     && mkdir /var/cache/apk
