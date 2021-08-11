@@ -1,10 +1,9 @@
-FROM node:16-alpine
+FROM node:16-alpine3.14
 
-ARG LIGHTHOUSE_VERSION=8.2.0
+ARG LIGHTHOUSE_VERSION=8.3.0
 
 # Installs latest Chromium package.
-RUN  echo "http://dl-cdn.alpinelinux.org/alpine/v3.14/main" >> /etc/apk/repositories \
-    && apk upgrade -U -a \
+RUN apk upgrade -U -a \
     && apk add --no-cache \
     libstdc++ \
     chromium \
