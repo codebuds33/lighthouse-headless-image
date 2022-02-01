@@ -1,6 +1,6 @@
 FROM node:16-alpine3.14
 
-ARG LIGHTHOUSE_VERSION=9.2.0
+ARG LIGHTHOUSE_VERSION=9.3.1
 
 # Installs latest Chromium package.
 RUN apk upgrade -U -a \
