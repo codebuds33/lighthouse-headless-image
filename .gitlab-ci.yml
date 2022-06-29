@@ -15,4 +15,4 @@ build_latest:
     - docker push $CI_REGISTRY_IMAGE
   only:
     refs:
-      -  /^[0-9]*\.[0-9]*\.[0-9]*$/
+      -  /^[0-9]+\.[0-9]+\.?[0-9]*\.?[0-9]*$/
