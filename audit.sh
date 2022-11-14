@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 usage() { echo "Usage: $0 [-u <string>] [-p <string>] [-o <string>] [-n <string>] [-f <string>] [-t <string>]" 1>&2; exit 1; }
 defaultOptions='--chrome-flags="--headless --no-sandbox  --disable-storage-reset --disable-dev-shm-usage --disable-gpu --no-first-run" --no-enable-error-reporting'
