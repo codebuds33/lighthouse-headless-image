@@ -3,6 +3,7 @@ stages:
 
 build_latest:
   tags:
+    - personal
     - dind
   stage: build
   services:
