@@ -9,7 +9,7 @@ In order to get this done the image has chromium installed and will run in the h
 If you want to audit an url you can run the following code:
 
 ```shell script
-docker run --rm -v ~/reports:/usr/src/app registry.codebuds.com/docker/lighthouse:latest -u https://site.mine
+docker run -u $UID --rm -v ~/reports:/usr/src/app registry.codebuds.com/docker/lighthouse:latest -u https://site.mine
 ```
 
 This will run the lighthouse audit for the given URL with and save the HTML file of the report in ~/reports.
@@ -23,17 +23,17 @@ There are certain more options that can be used :
 - `-o`: This allows to override the options that are used by default for the lighthouse audit.
   Because this is being run inside a docker container the default options are the
   following `--chrome-flags="--headless --no-sandbox" --no-enable-error-reporting`
-- `-f`: This allows to change the emulated form factor, either 'mobile', 'desktop' or 'none'. Default: 'mobile'`
+- `-f`: This allows to change the emulated form factor, either 'desktop', 'perf' or 'experimental'. Default: 'experimental' (I think, not sure yet)`
 - `-t`: This allows to change the output either 'html', 'csv' or 'json'. Default: 'html'`
 
 ## Examples
 
 ```shell script
-docker run --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3
+docker run -u $UID --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3
 # This will run 4 lighthouse audits in a row. As the default names will be used in this case they will all have the same name (which is the url) with different times.
 
 #To give custom names the following can be done
-docker run --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3 -n my-project
+docker run -u $UID --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3 -n my-project
 # This will create the following files :
 # ~/reports/my-project.report.html
 # ~/reports/my-project_page1.report.html
@@ -60,5 +60,5 @@ services:
 And run the following command :
 
 ```shell script
-docker-compose run --rm lighthouse audit -u https://site.mine
+docker-compose run -u $UID --rm lighthouse audit -u https://site.mine
 ```
