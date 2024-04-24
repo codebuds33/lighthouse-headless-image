@@ -29,11 +29,11 @@ There are certain more options that can be used :
 ## Examples
 
 ```shell script
-docker run -u $UID --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3
+docker run -u $UID --rm -v ~/reports:/usr/src/app registry.codebuds.com/docker/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3
 # This will run 4 lighthouse audits in a row. As the default names will be used in this case they will all have the same name (which is the url) with different times.
 
 #To give custom names the following can be done
-docker run -u $UID --rm -v ~/reports:/usr/src/app codebuds/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3 -n my-project
+docker run -u $UID --rm -v ~/reports:/usr/src/app registry.codebuds.com/docker/lighthouse audit -u https://site.mine -p /pageone,/page2,/page3 -n my-project
 # This will create the following files :
 # ~/reports/my-project.report.html
 # ~/reports/my-project_page1.report.html
